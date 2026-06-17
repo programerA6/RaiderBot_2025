@@ -1,34 +1,34 @@
-package frc.robot;
+package frc.robot; // import basic WPILib comands
 
-import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.auto.NamedCommands; // Provides functions/variables/methods/classes for interacting with the Pathfinder GUI.
 
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Filesystem;
-import edu.wpi.first.wpilibj.RobotBase;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import java.io.File;
+import edu.wpi.first.math.geometry.Pose2d; // handling of the robots position and orientation
+import edu.wpi.first.math.geometry.Rotation2d; // handling of the robots rotation
+import edu.wpi.first.math.geometry.Translation2d; // handling of the position of the robot excluding rotation.
+import edu.wpi.first.wpilibj.DriverStation; // facilitates interaction with the driver station software.
+import edu.wpi.first.wpilibj.Filesystem; // allows the program to find paths that were deployed directly to the RoboRIO
+import edu.wpi.first.wpilibj.RobotBase; // handles main robot loop and lifecycle.
+import edu.wpi.first.wpilibj2.command.Command; // Action handling.
+import edu.wpi.first.wpilibj2.command.Commands; // Faciliates the excecution of multiple simultanious comands.
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController; // Xbox controller interface.
+import java.io.File; //Read, write, or check file properties.
 
-import edu.wpi.first.wpilibj2.command.button.Trigger;
-import swervelib.SwerveInputStream;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.button.Trigger; // Identify a condition and complete an action based on that input.
+import swervelib.SwerveInputStream; // Format/modify driver joystick inputs before handoff to swerve drivetrain.
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser; // dropdown menu to select autonomous mode before match initiation.
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; // data transmision to smartdashboard software.
 
-import frc.robot.commands.ClimberUpCommand;
-import frc.robot.Constants.ClawConstants;
+import frc.robot.commands.ClimberUpCommand; // extend climbing implement.
+import frc.robot.Constants.ClawConstants; // holds fixed values for the claw mechanism.
 // import frc.robot.Constants.ElevatorConstants;
-import frc.robot.Constants.miscConstants;
-import frc.robot.commands.ClimberDownCommand;
-import frc.robot.subsystems.Claw.Claw;
-import frc.robot.subsystems.Climber.ClimbSubsystem;
-import frc.robot.subsystems.Elevator.ElevatorSubsystem;
-import frc.robot.subsystems.Swerve.SwerveSubsystem;
-import frc.robot.subsystems.Swerve.Vision;
-import frc.robot.subsystems.Elevator.ElevatorSubsystemSim;
+import frc.robot.Constants.miscConstants; //miscellaneous configuratoin values.
+import frc.robot.commands.ClimberDownCommand; // retract climbing implement.
+import frc.robot.subsystems.Claw.Claw; // control motors and sensors for claw mechanism.
+import frc.robot.subsystems.Climber.ClimbSubsystem; // control motors/pistons for climbing mechanism.
+import frc.robot.subsystems.Elevator.ElevatorSubsystem; // control motors, and all other equiptment for elevator subsystems.
+import frc.robot.subsystems.Swerve.SwerveSubsystem; // swerve drivetrain management.
+import frc.robot.subsystems.Swerve.Vision; // camera processing.
+import frc.robot.subsystems.Elevator.ElevatorSubsystemSim; // simulation-specific elavator control.
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
  * little robot logic should actually be handled in the {@link Robot} periodic methods (other than the scheduler calls).
