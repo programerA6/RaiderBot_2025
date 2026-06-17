@@ -34,11 +34,11 @@ import frc.robot.subsystems.Elevator.ElevatorSubsystemSim; // simulation-specifi
  * little robot logic should actually be handled in the {@link Robot} periodic methods (other than the scheduler calls).
  * Instead, the structure of the robot (including subsystems, commands, and trigger mappings) should be declared here.
  */
-public class RobotContainer
+public class RobotContainer // define the class that will contain all of the code for this file.
 {
 
-  final         CommandXboxController DriveController = new CommandXboxController(0);
-  final         CommandXboxController OPController = new CommandXboxController(1);
+  final         CommandXboxController DriveController = new CommandXboxController(0); // Create an xbox controller object on port 0
+  final         CommandXboxController OPController = new CommandXboxController(1); // Create an xbox controller object on port 1
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                                 "swerve"));
