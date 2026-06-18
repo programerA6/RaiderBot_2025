@@ -41,12 +41,12 @@ public class RobotContainer // define the class that will contain all of the cod
   final         CommandXboxController OPController = new CommandXboxController(1); // Create an xbox controller object on port 1
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
-                                                                                "swerve"));
-  public final ClimbSubsystem 
-  m_climber = new ClimbSubsystem();
+                                                                                "swerve")); // Define SwerveSubsystem, which controls the Swerve Drivetrain
+  public final ClimbSubsystem
+  m_climber = new ClimbSubsystem(); // Define the ClimbSubsystem, and create a new object from that subsystem.
 //======================Auton_Stuff=========================
 
-  private final Command Leave;
+  private final Command Leave; 
   private final Command algae_Left;
   private final Command Elevator_Test;
   private final Command Middle_Coral;
