@@ -41,11 +41,14 @@ public class RobotContainer // define the class that will contain all of the cod
   final         CommandXboxController OPController = new CommandXboxController(1); // Create an xbox controller object on port 1
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
-                                                                                "swerve")); // Define SwerveSubsystem, which controls the Swerve Drivetrain
-  public final ClimbSubsystem
-  m_climber = new ClimbSubsystem(); // Define the ClimbSubsystem, and create a new object from that subsystem.
-//======================Auton_Stuff=========================
-
+                                                                                "swerve"));
+  public final ClimbSubsystem 
+  m_climber = new ClimbSubsystem();
+//======================Define Auton Modes===============
+  /*
+    create varaible with the type "Command" which is a 
+    generic type given to all comands. This allows the specific type to be specified later.
+  */
   private final Command Leave; 
   private final Command algae_Left;
   private final Command Elevator_Test;
@@ -54,17 +57,20 @@ public class RobotContainer // define the class that will contain all of the cod
   private final Command Right_Coral;
 
 
-  SendableChooser<Command> m_chooser;
+  SendableChooser<Command> m_chooser; // Creates a menu in Shuffleboard/Smart Dashboard that facilitates the selection of auton modes. 
 
   //=======================================================
 
-  private final Claw sub_claw;
-  private final ElevatorSubsystem elevator;
-  private final ElevatorSubsystemSim elevatorsim;
+  private final Claw sub_claw; // Create a variable that can not be redefined with the type claw, with the name sub_claw.
+  private final ElevatorSubsystem elevator; // create a variable that can not be redefined with the type elevator subsystem with the name elevator.
+  private final ElevatorSubsystemSim elevatorsim; // create a variable that can not be redefined with the type elavator subystem with the name elavatorsim.
 
 
   SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
-                                                             () -> DriveController.getLeftY() * -1,
+                                                             // read the Y value of the left joystick, and tie that to the forward backward movement of the robot
+                                                             () /* the -> symbol tells the code "after the command that comes before the symbol is
+                                                              complete, run the command after the symbol"*/ -> DriveController.getLeftY() * -1,
+                                                             // read the X value of the left joystick and tie that to the strafe (side to side movement)
                                                              () -> DriveController.getLeftX() * -1)
                                                             //.withControllerRotationAxis(() -> DriveController.getRawAxis(2))
                                                             .withControllerRotationAxis(DriveController::getRightX)
@@ -72,8 +78,7 @@ public class RobotContainer // define the class that will contain all of the cod
                                                             .scaleTranslation(0.20)
                                                             .scaleRotation(0.15)
                                                             .allianceRelativeControl(true);
-            
- 
+  
 
   /**
    * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
