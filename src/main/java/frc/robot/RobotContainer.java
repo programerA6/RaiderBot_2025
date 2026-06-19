@@ -84,14 +84,14 @@ public class RobotContainer // define the class that will contain all of the cod
    * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
    */
   SwerveInputStream /*<-- type*/ driveDirectAngle /* <-- Variable Name*/ = driveAngularVelocity.copy().withControllerHeadingAxis(DriveController::getLeftX,
-                                                                                             DriveController::getLeftY)
+                                                                                             DriveController::getLeftY) // Creates a copy of the controller data, but relative to a different marker
                                                            .headingWhile(true);
                                                            
 
   /**
    * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
    */
-  SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(false)
+  SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(false) 
                                                              .allianceRelativeControl(true);
 
   SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(drivebase.getSwerveDrive(),
