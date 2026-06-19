@@ -73,11 +73,11 @@ public class RobotContainer // define the class that will contain all of the cod
                                                              // read the X value of the left joystick and tie that to the strafe (side to side movement)
                                                              () -> DriveController.getLeftX() * -1)
                                                             //.withControllerRotationAxis(() -> DriveController.getRawAxis(2))
-                                                            .withControllerRotationAxis(DriveController::getRightX)
-                                                            .deadband(miscConstants.DEADBAND)
-                                                            .scaleTranslation(0.20)
-                                                            .scaleRotation(0.15)
-                                                            .allianceRelativeControl(true);
+                                                            .withControllerRotationAxis(DriveController::getRightX) // read the X axis of the right joystick and use that to control rotation
+                                                            .deadband(miscConstants.DEADBAND) // apply the  deadband (Near zero input will be ignored) for the joysticks
+                                                            .scaleTranslation(0.20) // set translation movement speed to 20% of maximum
+                                                            .scaleRotation(0.15) // Set rotation speed to 15% maximum
+                                                            .allianceRelativeControl(true); // Sets the frame of reference for the controls
   
 
   /**
