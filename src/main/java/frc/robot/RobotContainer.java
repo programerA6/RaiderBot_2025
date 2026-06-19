@@ -66,7 +66,7 @@ public class RobotContainer // define the class that will contain all of the cod
   private final ElevatorSubsystemSim elevatorsim; // create a variable that can not be redefined with the type elavator subystem with the name elavatorsim.
 
 
-  SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
+  SwerveInputStream /*<-- type*/ driveAngularVelocity /* <-- Variable name*/ = SwerveInputStream.of(drivebase.getSwerveDrive(),
                                                              // read the Y value of the left joystick, and tie that to the forward backward movement of the robot
                                                              () /* the -> symbol tells the code "after the command that comes before the symbol is
                                                               complete, run the command after the symbol"*/ -> DriveController.getLeftY() * -1,
@@ -83,7 +83,7 @@ public class RobotContainer // define the class that will contain all of the cod
   /**
    * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
    */
-  SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(DriveController::getLeftX,
+  SwerveInputStream /*<-- type*/ driveDirectAngle /* <-- Variable Name*/ = driveAngularVelocity.copy().withControllerHeadingAxis(DriveController::getLeftX,
                                                                                              DriveController::getLeftY)
                                                            .headingWhile(true);
                                                            
