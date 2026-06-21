@@ -29,3 +29,14 @@ In RobotContainer.java, you see all of the different subsystems being created an
 used, as well as many other things besides.
 
 Current line: 86/341
+
+6/21/2026 Method Madness
+
+I have found multiple methods, which are basicaly Java specific functions because
+they exist inside of classes and require extra data in order to run, that have either 
+missleading names, or have blocks of code that has been comented out with no reason or 
+eplanation that I could find. This is a continuation of the aformentioned lack of coments.
+
+I ahve also found odd indentation for most of the methods. This takes the form of the 
+statements being tabbed almost completely off of the screen, no matter what device I am 
+currently viewing the code from. 
