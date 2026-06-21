@@ -66,6 +66,13 @@ public class RobotContainer // define the class that will contain all of the cod
   private final ElevatorSubsystemSim elevatorsim; // create a variable that can not be redefined with the type elavator subystem with the name elavatorsim.
 
 
+  /*
+    This is where driveAngularVelocity is first assigned a value. Its value is the position of the X and Y values of the left joystick of the xbox controller.
+    Since "final" was not declared, its value can be altered and its name can be re-assigned. The position of the joystick is modified by a deadband,
+    which helps to combat stick drift and prefents acidental movement when the joysticks should be stationary. There are also modifiers that set limits
+    on the speed that the robot can move, which are the ".scale<movementtype>" statements.
+  */
+
   SwerveInputStream /*<-- type*/ driveAngularVelocity /* <-- Variable name*/ = SwerveInputStream.of(drivebase.getSwerveDrive(),
                                                              // read the Y value of the left joystick, and tie that to the forward backward movement of the robot
                                                              () /* the -> symbol tells the code "after the command that comes before the symbol is
@@ -91,7 +98,7 @@ public class RobotContainer // define the class that will contain all of the cod
   /**
    * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
    */
-  SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(false) 
+  SwerveInputStream /*<-- type */ driveRobotOriented /*<-- variable name */ = driveAngularVelocity.copy().robotRelative(false) 
                                                              .allianceRelativeControl(true);
 
   SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(drivebase.getSwerveDrive(),
