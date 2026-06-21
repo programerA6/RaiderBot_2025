@@ -1,0 +1,31 @@
+Raider Robotics team 2025 review.
+
+6/20/2026 First Entry
+
+I have been analyzing the code for the 2025 Raider Robotics FRC team 5516.
+I have noticed many flaws in the code, as well as some sections that are possitively
+briliant. The key aspects that I find indeed quite nice are the swerve drive system,
+and the neat arangement of all of the project folders. Apart from that, the code
+itself is quite complexe, and I give my regards to the developer.
+
+With that out of the way, it is time for my to list the downsides that I have
+discovered so far. I have found that the file tend to have multiple swaths of
+code comented out, with no explenation as to the purpose of these extra lines.
+I have also noticed that the code is woefully lacking in comments. I have been
+working to correct this issue by going line by line and noting what the statements
+actually do. I should not have to do this, as the project should be up to academic
+standards.
+
+My first order of buisness is to attempt to decipher what each line of the program does,
+so that I can, at least to a certain degree, determine the skill of the developer
+as well as the design and preferences of the team. From what I have already observed,
+the robot utilizes a swerve drive system. The swerve system is a holonomic drive type,
+and is designed to solve the major issues with a standard drive system such as arcade
+or tank.
+
+My starting point for this project is robotcontainer.java. RobotContainer.java is
+the nexus for all of the robot's code. It is where all of the roads eventually lead.
+In RobotContainer.java, you see all of the different subsystems being created and
+used, as well as many other things besides.
+
+Current line: 86/341
