@@ -70,7 +70,8 @@ public class RobotContainer // define the class that will contain all of the cod
     This is where driveAngularVelocity is first assigned a value. Its value is the position of the X and Y values of the left joystick of the xbox controller.
     Since "final" was not declared, its value can be altered and its name can be re-assigned. The position of the joystick is modified by a deadband,
     which helps to combat stick drift and prefents acidental movement when the joysticks should be stationary. There are also modifiers that set limits
-    on the speed that the robot can move, which are the ".scale<movement type>" statements.
+    on the speed that the robot can move, which are the ".scale<movement type>" statements. The SwerveInputStream type is a helper of the YAGSL library,
+    and it provides a steady "stream" of data for the drive algorithm. 
   */
 
   SwerveInputStream /*<-- type*/ driveAngularVelocity /* <-- Variable name*/ = SwerveInputStream.of(drivebase.getSwerveDrive(),
@@ -95,13 +96,18 @@ public class RobotContainer // define the class that will contain all of the cod
                                                            .headingWhile(true);
                                                            
 
-  /**
-   * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
+  /*
+    Clone's the angular velocity input stream and converts it to a robotRelative input stream.
    */
-  SwerveInputStream /*<-- type */ driveRobotOriented /*<-- variable name */ = driveAngularVelocity.copy().robotRelative(false) 
-                                                             .allianceRelativeControl(true);
+  SwerveInputStream /*<-- type */ driveRobotOriented /*<-- variable name */ = driveAngularVelocity.copy() /*<-- creates a copy of the driveAngularVelocity variable*/.robotRelative(false) 
+                                                             .allianceRelativeControl(true); /* <-- modifies the copy of the driveAngualVelocity variable, setting it to alliance relative.
+                                                             This seams to orient the robot based on markers defined as alliance specific.*/
 
-  SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(drivebase.getSwerveDrive(),
+  /*
+    This creates a secondary driveangularVelocity variable, this time with the suffix "Keyboard" which, most likely, is used for the simulation.
+    The translation scaler is set to 0.8, which means the robot will move side to side at 80% throttle. 
+  */
+  SwerveInputStream /* <-- type */ driveAngularVelocityKeyboard /*<-- variable name */ = SwerveInputStream.of(drivebase.getSwerveDrive(),
                                                                       () -> -DriveController.getLeftY(),
                                                                       () -> -DriveController.getLeftX())
                                                                     .withControllerRotationAxis(() -> DriveController.getRawAxis(
@@ -113,7 +119,7 @@ public class RobotContainer // define the class that will contain all of the cod
                                                                     .scaleTranslation(0.8)
                                                                     .allianceRelativeControl(true);
   // Derive the heading axis with math!
-  SwerveInputStream driveDirectAngleKeyboard     = driveAngularVelocityKeyboard.copy()
+  SwerveInputStream /*<-- type */ driveDirectAngleKeyboard /*<-- variable name*/    = driveAngularVelocityKeyboard.copy()
                                                                                .withControllerHeadingAxis(() ->
                                                                                                               Math.sin(
                                                                                                                 DriveController.getRawAxis(
