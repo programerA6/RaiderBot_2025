@@ -99,7 +99,7 @@ public class RobotContainer // define the class that will contain all of the cod
   /*
     Clone's the angular velocity input stream and converts it to a robotRelative input stream.
    */
-  SwerveInputStream /*<-- type */ driveRobotOriented /*<-- variable name */ = driveAngularVelocity.copy() /*<-- creates a copy of the driveAngularVelocity variable*/.robotRelative(false) 
+  SwerveInputStream /*<-- type */ driveRobotOriented /*<-- variable name */ = driveAngularVelocity.copy()/*<-- creates a copy of the driveAngularVelocity variable*/.robotRelative(false) 
                                                              .allianceRelativeControl(true); /* <-- modifies the copy of the driveAngualVelocity variable, setting it to alliance relative.
                                                              This seams to orient the robot based on markers defined as alliance specific.*/
 
@@ -116,16 +116,14 @@ public class RobotContainer // define the class that will contain all of the cod
                                                                     // .withControllerRotationAxis(() -> driverJoystick.getRawAxis(
                                                                         2))
                                                                     .deadband(miscConstants.DEADBAND)
-                                                                    .scaleTranslation(0.8)
-                                                                    .allianceRelativeControl(true);
+                                                                    .scaleTranslation(0.8) //sets translation (side to side movement) throttle to 80% 
+                                                                    .allianceRelativeControl(true); //sets the movement relative to the alliance markers. 
   // Derive the heading axis with math!
-  SwerveInputStream /*<-- type */ driveDirectAngleKeyboard /*<-- variable name*/    = driveAngularVelocityKeyboard.copy()
-                                                                               .withControllerHeadingAxis(() ->
-                                                                                                              Math.sin(
-                                                                                                                DriveController.getRawAxis(
+  SwerveInputStream /*<-- type */ driveDirectAngleKeyboard /*<-- variable name*/    = driveAngularVelocityKeyboard.copy() /*<-- create a copy of the driveAngularVelocityKeyboard variable*/
+                                                                               .withControllerHeadingAxiontroller.getRawAxis(
                                                                                                                   // driverJoystick.getRawAxis(
                                                                                                                       2) *
-                                                                                                                  Math.PI) *
+                                                                                                                  (Math.PI) *
                                                                                                               (Math.PI *
                                                                                                                2),
                                                                                                           () ->
@@ -135,7 +133,7 @@ public class RobotContainer // define the class that will contain all of the cod
                                                                                                                       2) *
                                                                                                                   Math.PI) *
                                                                                                               (Math.PI *
-                                                                                                               2))
+                                                                                                               (2))
                                                                                .headingWhile(true);
 
   /**
