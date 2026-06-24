@@ -141,6 +141,11 @@ public class RobotContainer // define the class that will contain all of the cod
    */
   public RobotContainer()
   {
+    /*
+    Create new instances of the Claw, ElavatorSubsystem, and ElavatorSubsytemSim classes and assign a variable to them.
+    This allows the to be referenced via the variable name. This facilitates more complexe usage of the classes, such as
+    calling sub_claw.<methodname>(<parameter>), to call a specific method from the Claw subsystem, and provide it with a parameter.
+    */
     sub_claw = new Claw();
     elevator = new ElevatorSubsystem();
     elevatorsim = new ElevatorSubsystemSim(elevator);
