@@ -173,8 +173,8 @@ public class RobotContainer // define the class that will contain all of the cod
 //   elevator.goToSetpoint(ElevatorConstants.ElevatorConfigs.Positions.Algae_2.getPos());
 // }));
 
-NamedCommands.registerCommand("Algae_Intake", Commands.run(() -> {
-  sub_claw.goToSetpoint(ClawConstants.Wrist.WristPositions.Algae_Drive.getPos());
+NamedCommands/*<-- invoke a comand with a specific name*/.registerCommand/*<-- assign a command*/("Algae_Intake"/*<-- command name Algae_Intake*/, Commands.run/*Run a specific command*/(() -> {
+  sub_claw/*act within the claw subsystem */.goToSetpoint/*tell the motor to move to a specific position*/(ClawConstants.Wrist.WristPositions.Algae_Drive.getPos()/*get the position of the claw's wrist*/);
 }));
 NamedCommands.registerCommand("Algae_Intake_Rollers", Commands.run(() -> {
   sub_claw.setRollerPower(9); 
