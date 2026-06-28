@@ -159,7 +159,7 @@ public class RobotContainer // define the class that will contain all of the cod
 
 //========================Auton_Stuff===================================================
 //=======================Nammed_Commands================================================
-
+//These named commands provide instructions for the robot, and can be selected from the drive station.
 // NamedCommands.registerCommand("Saftey", Commands.run(() -> {
 //   sub_claw.goToSetpoint(ClawConstants.Wrist.WristPositions.Elevator_Threh.getPos()); 
 // }));
@@ -177,7 +177,7 @@ NamedCommands/*<-- invoke a comand with a specific name*/.registerCommand/*<-- a
   sub_claw/*act within the claw subsystem */.goToSetpoint/*tell the motor to move to a specific position*/(ClawConstants.Wrist.WristPositions.Algae_Drive.getPos()/*get the position of the claw's wrist*/);
 }));
 NamedCommands.registerCommand("Algae_Intake_Rollers", Commands.run(() -> {
-  sub_claw.setRollerPower(9); 
+  sub_claw.setRollerPower(9)/*set the power of the roller to 9*/; 
 }));
 NamedCommands.registerCommand("Stop", Commands.run(() -> {
   sub_claw.setRollerPower(0); 
@@ -192,7 +192,7 @@ NamedCommands.registerCommand("Climb_Up", Commands.run(() -> {
   OPController.back().whileTrue(new ClimberUpCommand(m_climber));
 }));
 
-
+//configure the named commands for use in the selection menu on the driver station.
     Leave = drivebase.getAutonomousCommand("Leave");
     algae_Left = drivebase.getAutonomousCommand("algae_Left");
     Elevator_Test = drivebase.getAutonomousCommand("Elevator Test");
@@ -200,9 +200,9 @@ NamedCommands.registerCommand("Climb_Up", Commands.run(() -> {
     Right_Coral = drivebase.getAutonomousCommand("Right Coral");
     Left_Coral = drivebase.getAutonomousCommand("Left Coral");
     
-
+    //Createa new selection menu
     m_chooser = new SendableChooser<Command>();
-
+    //add all of the options to the selection menu
     m_chooser.addOption("Leave", Leave);
     m_chooser.addOption("algae_Left", algae_Left);
     m_chooser.addOption("Elevator Test", Elevator_Test);
@@ -210,7 +210,7 @@ NamedCommands.registerCommand("Climb_Up", Commands.run(() -> {
     m_chooser.addOption("Left Coral", Left_Coral);
     m_chooser.addOption("Right Coral", Right_Coral);
 
-
+    //Output the options to the selection menu
     SmartDashboard.putData(m_chooser);
 
 //======================================================================================
