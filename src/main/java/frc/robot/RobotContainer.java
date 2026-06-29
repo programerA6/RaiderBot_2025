@@ -200,7 +200,7 @@ NamedCommands.registerCommand("Climb_Up", Commands.run(() -> {
     Right_Coral = drivebase.getAutonomousCommand("Right Coral");
     Left_Coral = drivebase.getAutonomousCommand("Left Coral");
     
-    //Createa new selection menu
+    //Create a new selection menu
     m_chooser = new SendableChooser<Command>();
     //add all of the options to the selection menu
     m_chooser.addOption("Leave", Leave);
@@ -216,7 +216,7 @@ NamedCommands.registerCommand("Climb_Up", Commands.run(() -> {
 //======================================================================================
 
   }
-  private void configureBindings()
+  private void configureBindings() // create a method with the name "configureBindings"
   {
         
 
